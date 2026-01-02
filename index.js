@@ -96,8 +96,6 @@ bot.on('interactionCreate', async interaction => {
 });
 
 
-
-
 ////// LOGIN
 bot.login(DISCORD_BOT_TOKEN);
 
