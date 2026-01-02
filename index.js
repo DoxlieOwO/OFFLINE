@@ -14,7 +14,16 @@ app.use(express.json())
 
 ///// MEMORY
 const SessionStore = {};
-const WhitelistedUsers = new Set();
+const WhitelistedUsers = new Set([
+    "1123059740512100403", //// DOXLIE, ME
+    "245181697849556992", //// ZAR0XZ MY BELOVED BOYFRIEND
+
+    
+    "622319114530324491", //// SOUP
+    "469529993647489025", //// DEXII
+    "912081502064484352", //// NULLZONE :warning:
+    
+]);
 
 
 ////// DISCORD BOT SETUP
