@@ -63,7 +63,7 @@ bot.on('clientReady', async () => {
         console.log('Registering slash commands...');
         await rest.put(
             Routes.applicationCommands(bot.user.id),
-            { body: commands }
+            { body: commands.map(cmd => cmd.toJSON()) },
         );
         console.log('Slash commands registered!');
     } catch (error) {
