@@ -102,7 +102,7 @@ bot.on('interactionCreate', async interaction => {
         return interaction.reply({ content: 'You are not authorized to use this command.', ephemeral: true });
       }
 
-    if (interaction.commandName === 'session') {
+    if (interaction.commandName === 'create') {
         const code = interaction.options.getString('code');
 
         const sessionKey = `OFFLINE-${Date.now()}${Math.random().toString(36).substring(2, 9).toUpperCase()}`;
