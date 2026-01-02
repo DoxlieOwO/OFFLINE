@@ -56,7 +56,7 @@ const commands = [
 const rest = new REST({ version: '10' }).setToken(DISCORD_BOT_TOKEN);
 
 
-bot.on('ready', async () => {
+bot.on('clientReady', async () => {
     console.log(`Bot logged in as ${bot.user.tag}`);
 
     try {
