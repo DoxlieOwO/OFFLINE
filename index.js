@@ -27,7 +27,7 @@ const WhitelistedUsers = new Set([
 
 
 ////// DISCORD BOT SETUP
-const { Client, GatewayIntentBits, REST, Routes, SlashCommandBuilder } = require('discord.js');
+import { Client, GatewayIntentBits, REST, Routes, SlashCommandBuilder } from "discord.js";
 
 const bot = new Client({ 
     intents: [
@@ -42,33 +42,56 @@ const bot = new Client({
 
 const DISCORD_BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
 
+///// SLASH COMMANDS SETUP
+
 const commands = [
-    new SlashCommandBuilder()
-        .setName('session')
-        .setDescription('Create a new OFFLINE session')
-        .addStringOption(option =>
-            option.setName('code')
-                .setDescription('The code to create a session with')
-                .setRequired(true)
-        )
-];
+    {
+        name: 'create',
+        description: 'Create a new OFFLINE session',
+        options: [
+            {
+                name: 'code',
+                description: 'The code to create a session with',
+                type: 3,
+                required: true
+            }
+        ]
+    }
+]
 
 const rest = new REST({ version: '10' }).setToken(DISCORD_BOT_TOKEN);
+
+(async () => {
+    try {
+        console.log('Registering slash commands...');
+        await rest.put(
+            Routes.applicationCommands('1456497606271439019'), // BOT APPLICATION ID
+            { body: commands },
+        );
+        
+        console.log('Slash commands registered!');
+
+    }  catch (error) {
+        console.error('Error registering commands:', error);
+    }
+})();
+
+
 
 
 bot.on('clientReady', async () => {
     console.log(`Bot logged in as ${bot.user.tag}`);
 
-    try {
-        console.log('Registering slash commands...');
-        await rest.put(
-            Routes.applicationCommands(bot.user.id),
-            { body: commands.map(cmd => cmd.toJSON()) },
-        );
-        console.log('Slash commands registered!');
-    } catch (error) {
-        console.error('Error registering commands:', error);
-    }
+    //try {
+     //   console.log('Registering slash commands...');
+      //  await rest.put(
+      //      Routes.applicationCommands(bot.user.id),
+      //      { body: commands },
+       // );
+      //  console.log('Slash commands registered!');
+    //} catch (error) {
+     //   console.error('Error registering commands:', error);
+    //}
 });
 
 
