@@ -40,7 +40,7 @@ const bot = new Client({
 
 
 
-const DISCORD_BOT_TOKEN = "MTQ1NjQ5NzYwNjI3MTQzOTAxOQ.GIyIGP.-ZFnD9ifEJbs3o8px_AIFeh4TJkNEVQ8c-fejc";
+const DISCORD_BOT_TOKEN = process.env.BOT_TOKEN;
 
 const commands = [
     new SlashCommandBuilder()
