@@ -27,7 +27,7 @@ const WhitelistedUsers = new Set([
 
 
 ////// DISCORD BOT SETUP
-import { Client, GatewayIntentBits, REST, Routes, SlashCommandBuilder } from "discord.js";
+const { Client, GatewayIntentBits, REST, Routes, SlashCommandBuilder } = require('discord.js');
 
 const bot = new Client({ 
     intents: [
@@ -68,7 +68,7 @@ const rest = new REST({ version: '10' }).setToken(DISCORD_BOT_TOKEN);
             Routes.applicationCommands('1456497606271439019'), // BOT APPLICATION ID
             { body: commands },
         );
-        
+
         console.log('Slash commands registered!');
 
     }  catch (error) {
