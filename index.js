@@ -29,6 +29,8 @@ const WhitelistedUsers = new Set([
     "1356654013374009496", //// VENTRIC
     "1074695683958910989", //// PINKY
     "1009139301050757180", //// SNOWY
+    "1201748475205910548", //// BUBBA_DEVELOPER
+    
 ]);
 
 
